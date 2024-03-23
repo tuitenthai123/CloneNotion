@@ -1,29 +1,26 @@
 import React from 'react'
-// import { Form, Link } from 'react-router-dom'
-import { FaUser, FaUnlockAlt } from "react-icons/fa";
+// import { FaUser, FaUnlockAlt } from "react-icons/fa";
 
 
-const Login = ({hideForm}) => {
+const Login = ({hideForm, convert}) => {
   return (
-      <form action='' method='' className='relative flex flex-col items-center h-1/3 w-1/5 bg-[#ffffff] p-3'>
-          <span className='absolute top-0 right-0 px-3 py-1 hover:bg-[#f55] font-bold cursor-pointer' onClick={hideForm}>x</span>
-          <h3 className='text-xl my-2 cl-[#c5c5c5]'>Log In</h3>
-          <div className='flex items-center w-full p-2 bg-[#fff] border-2 border-solid rounded-2xl mb-2'>
-              <FaUser />
-              <input type='text' placeholder='Username' className='flex-1 mx-2 outline-none'/>
-          </div> 
-          <div className='flex items-center w-full p-2 bg-[#fff] border-2 border-solid rounded-2xl'>
-              <FaUnlockAlt />
-              <input type='password' placeholder='Password' className='flex-1 mx-2 outline-none'/>
+        <div className="relative py-6 px-8 h-80 mt-20 bg-white rounded-xl shadow-xl">
+        <span className="absolute font-bold top-0 right-0 px-4 py-2 hover:bg-[#f00] hover:cursor-pointer hover:text-white" onClick={hideForm}>x</span>
+        <form action="">
+          <div className="mb-6">
+            <label htmlFor="name" className="block text-gray-800 font-bold">Username:</label>
+            <input type="text" name="name" id="name" placeholder="username" className="w-full border border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600 :ring-indigo-600" />
           </div>
-          <input type='submit' value={'Login'} className=' w-full py-2 bg-[#55ff55] border-2 border-solid mt-10  border-solid rounded-2xl cursor-pointer' />
-          {/* <div>
-            <div>
-              <input type='checkbox' />Remember me
-            </div>
-            <Link to='/'>Forgot passwork</Link>
-          </div> */}
-      </form>
+
+          <div>
+            <label htmlFor="email" className="block text-gray-800 font-bold">Password:</label>
+            <input type="password" name="email" id="email" placeholder="password" className="w-full border border-gray-300 py-2 pl-3 rounded mt-2 outline-none focus:ring-indigo-600 :ring-indigo-600" />
+
+            <p href="#" className="text-sm font-thin text-gray-800 hover:underline mt-4 inline-block hover:text-indigo-600 cursor-pointer" onClick={convert}>To Form SignUp?</p>
+          </div>
+          <button className="cursor-pointer py-2 px-4 block mt-6 bg-indigo-500 text-white font-bold w-full text-center rounded">Login</button>
+        </form>
+      </div>
   )
 }
 
