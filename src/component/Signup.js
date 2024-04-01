@@ -9,10 +9,10 @@ const Signup = ({hideForm, convert}) => {
 
   const handleSubmit = () => {
       if(pass === repass){
-        axios.post('http://localhost:9001/user/signup',{user, pass})
+        axios.post('http://localhost:5000/user/signup',{user, pass})
           .then(res => alert(res.data.respone ? 'Đăng kí tài khoản thành công':'Đăng kí tài khoản không thành công') );
       }else{
-        alert('Nhập lại mật khẩu không khớp')
+        alert('sai mật khẩu')
       }   
   }
 

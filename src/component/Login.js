@@ -5,16 +5,29 @@ import axios from 'axios';
 const Login = ({hideForm, convert}) => {
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
+  const [isLogin, setIsLogin] = useState(false);
 
-  const handleSubmit = () => {
-      axios.post('https://localhost:9001/user/login',{user, pass})
-        .then(res => alert(res.data.respone ? 'Đăng nhập thành công':'Tên đăng nhập hoặc mật khẩu không đúng'));
-  }
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/user/login', { user, pass });
+      if (response.data.respone) {
+        setIsLogin(true);
+        // Chuyển hướng đến dashboard sau khi đăng nhập thành công 
+          window.location.href = `http://localhost:3000/dashboard/main`;
+      } else {
+        alert('Tên đăng nhập hoặc mật khẩu không đúng');
+      }
+    } catch (error) {
+      console.error('Đăng nhập thất bại:', error);
+    }
+
+  };
 
   return (
         <div className="relative py-6 px-8 h-80 mt-20 bg-white rounded-xl shadow-xl">
         <span className="absolute font-bold top-0 right-0 px-4 py-2 hover:bg-[#f00] hover:cursor-pointer hover:text-white" onClick={hideForm}>x</span>
-        <form action="">
+        <form action="post" method='post'>
           <div className="mb-6">
             <label htmlFor="name" className="block text-gray-800 font-bold">Username:</label>
             <input 
